@@ -8,11 +8,14 @@
 #ifndef MOTOR_DRIVER_H_
 #define MOTOR_DRIVER_H_
 
+void initRobot();
+
 void leftMotorForward(char dutyCycle);
 void rightMotorForward(char dutyCycle);
 void leftMotorBackward(char dutyCycle);
 void leftMotorBackward(char dutyCycle);
 
+void stopRobot(char time);
 void moveRobotForward(char dutyCycle, char movementTime);
 void moveRobotBackward(char dutyCycle, char movementTime);
 void turnRobotLeft(char dutyCycle, char movementTime);
