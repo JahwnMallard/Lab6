@@ -9,17 +9,14 @@ int main(void) {
 moveRobotForward(0);
 	  while (1) {
 	        __delay_cycles(1000000);
-	        TA0CCR1 = 50;
-	        TA1CCR1 = 50;// set duty cycle to 50/100 (50%)
+	      moveRobotForward(100);
 	        __delay_cycles(1000000);
-	        TA0CCR1 = 75;            // set duty cycle to 75/100 (75%)
-	        TA1CCR1 = 75;
+	        moveRobotBackward(100);
 	        __delay_cycles(1000000);
-	        TA0CCR1 = 100;            // set duty cycle to 100/100 (100%)
-	        TA1CCR1 = 100;
+	        moveRobotForward(100);
 	        __delay_cycles(1000000);
-	        TA0CCR1 = 25;            // set duty cycle to 25/100 (25%)
-	        TA1CCR1 = 25;
+	        moveRobotBackward(100);
+
 	  }
 
 

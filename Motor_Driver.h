@@ -10,10 +10,10 @@
 
 void initRobot();
 
-void leftMotorForward(char dutyCycle);
-void rightMotorForward(char dutyCycle);
-void leftMotorBackward(char dutyCycle);
-void leftMotorBackward(char dutyCycle);
+void leftMotorForward();
+void rightMotorForward();
+void leftMotorBackward();
+void leftMotorBackward();
 
 void stopRobot();
 void moveRobotForward(char dutyCycle);
