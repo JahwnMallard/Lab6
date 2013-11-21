@@ -61,12 +61,13 @@ TA0CCTL0 |=OUTMOD_5;
 void rightMotorForward() {
 	TA1CCTL0 |=OUTMOD_4;
 }
+void rightMotorBackward() {
+	TA1CCTL0 |=OUTMOD_4;
+}
 void leftMotorBackward() {
 	TA0CCTL0 |=OUTMOD_4;
 }
-void rightMotorBackward() {
-	TA1CCTL0 |=OUTMOD_5;
-}
+
 
 void moveRobotForward(char dutyCycle) {
 	TA0CCR1 = 0;
@@ -78,20 +79,20 @@ void moveRobotForward(char dutyCycle) {
 
 void moveRobotBackward(char dutyCycle) {
 	TA0CCR1 = dutyCycle;
-	TA1CCR1 = 0;
+	TA1CCR1 = dutyCycle;
 	rightMotorBackward();
 	leftMotorBackward();
 
 }
 void turnRobotLeft(char dutyCycle) {
-	TA0CCR1 = 0;
-	TA1CCR1 = 0;
+	TA0CCR1 = dutyCycle;
+	TA1CCR1 = dutyCycle;
 	rightMotorForward();
 	leftMotorBackward();
 
 }
 void turnRobotRight(char dutyCycle) {
-	TA0CCR1 = dutyCycle;
+	TA0CCR1 = 0;
 	TA1CCR1 = dutyCycle;
 	rightMotorBackward();
 	leftMotorForward();
