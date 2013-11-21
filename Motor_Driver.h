@@ -15,10 +15,10 @@ void rightMotorForward(char dutyCycle);
 void leftMotorBackward(char dutyCycle);
 void leftMotorBackward(char dutyCycle);
 
-void stopRobot(char time);
-void moveRobotForward(char dutyCycle, char movementTime);
-void moveRobotBackward(char dutyCycle, char movementTime);
-void turnRobotLeft(char dutyCycle, char movementTime);
-void turnRobotRight(char dutyCycle, char movementTime);
+void stopRobot();
+void moveRobotForward(char dutyCycle);
+void moveRobotBackward(char dutyCycle);
+void turnRobotLeft(char dutyCycle);
+void turnRobotRight(char dutyCycle);
 
 #endif /* MOTOR_DRIVER_H_ */

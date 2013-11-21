@@ -6,17 +6,30 @@
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	initRobot();
-	moveRobotForward(10, 2000);
-	stopRobot(500);
-	moveRobotBackward(10,2000);
-	stopRobot(500);
-	turnRobotLeft(10,500);
-	stopRobot(500);
-	turnRobotRight(10,500);
-	stopRobot(500);
-	turnRobotLeft(10,2000);
-	stopRobot(500);
-	turnRobotRight(10,2000);
-	stopRobot(1000);
-	return 0;
+
+	moveRobotForward(100);
+	__delay_cycles(10000);
+//	stopRobot();
+	moveRobotBackward(100);
+	__delay_cycles(10000);
+	moveRobotForward(100);
+	__delay_cycles(10000);
+	moveRobotBackward(100);
+	__delay_cycles(10000);
+	moveRobotForward(10);
+	__delay_cycles(100000);
+//	stopRobot();
+//	turnRobotLeft(10);
+//	__delay_cycles(100000);
+//	stopRobot();
+//	turnRobotRight(10);
+//	__delay_cycles(100000);
+//	stopRobot();
+//	turnRobotLeft(10);
+//	__delay_cycles(300000);
+//	stopRobot();
+//	turnRobotRight(10);
+//	__delay_cycles(300000);
+//	stopRobot();
+
 }
