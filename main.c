@@ -8,14 +8,19 @@ int main(void) {
 	initRobot();
 
 	  while (1) {
-	        __delay_cycles(5000000);
+
 	      moveRobotForward(100);
-	        __delay_cycles(5000000);
+	        __delay_cycles(700000);
 	        moveRobotBackward(100);
-	        __delay_cycles(5000000);
+	        __delay_cycles(700000);
 	        turnRobotLeft(100);
-	        __delay_cycles(5000000);
+	        __delay_cycles(700000);
 	        turnRobotRight(100);
+	        __delay_cycles(700000);
+	        turnRobotLeft(100);
+	        __delay_cycles(1500000);
+	        turnRobotRight(100);
+	        __delay_cycles(1500000);
 
 	  }
 
