@@ -9,19 +9,19 @@
 #include "Motor_Driver.h"
 void initRobot() {
 
-	P1DIR |= BIT1;                // TA0CCR1 on P1.2
-	P1SEL |= BIT1;                // TA0CCR1 on P1.2
-
 	P1DIR |= BIT2;                // TA0CCR1 on P1.2
 	P1SEL |= BIT2;                // TA0CCR1 on P1.2
 
 	P2DIR |= BIT1;                // TA0CCR1 on P1.2
-	P2SEL |= BIT1;               // TA0CCR1 on P1.2
+	P2SEL |= BIT1;                // TA0CCR1 on P1.2
 
-	P2DIR |= BIT0;                // TA0CCR1 on P2.2
-	P2SEL |= BIT0;                // TA0CCR1 on P2.2
+	P2DIR |= BIT5;                // TA0CCR1 on P1.2
+	P2SEL |= BIT5;               // TA0CCR1 on P1.2
 
-	WDTCTL = WDTPW | WDTHOLD;                 // stop the watchdog timer
+	P2DIR |= BIT4;                // TA0CCR1 on P2.2
+	P2SEL |= BIT4;                // TA0CCR1 on P2.2
+
+	WDTCTL = WDTPW | WDTHOLD;          // stop the watchdog timer
 
 	TA0CTL &= ~MC1 | MC0;
 	TA1CTL &= ~MC1 | MC0;
@@ -36,11 +36,11 @@ void initRobot() {
 	TA1CCR0 = 100;
 	TA0CCR1 = 0;
 	TA1CCR1 = 0;
+	TA1CCR2 = 0;  //BACK WHEELS        TA1.2
 
 	TA0CCTL1 |= OUTMOD_7;
-	TA0CCTL0 |= OUTMOD_5;
 	TA1CCTL1 |= OUTMOD_7;        // set TACCTL1 to Reset / Set mode
-	TA1CCTL0 |= OUTMOD_5;
+	TA1CCTL2 |= OUTMOD_7;
 
 	TA0CTL |= MC0;
 	TA1CTL |= MC0;               // count up
@@ -56,45 +56,51 @@ void stopRobot() {
 }
 
 void leftMotorForward() {
-TA0CCTL0 |=OUTMOD_5;
-}
-void rightMotorForward() {
-	TA1CCTL0 |=OUTMOD_4;
-}
-void rightMotorBackward() {
-	TA1CCTL0 |=OUTMOD_4;
-}
-void leftMotorBackward() {
-	TA0CCTL0 |=OUTMOD_4;
+	TA0CCR1 = 100;
+	TA1CCR2 = 0;
 }
 
+void leftMotorStop() {
+	TA0CCR1 = 0;
+	TA1CCR2 = 0;
+}
+
+void rightMotorStop() {
+	TA1CCR1 = 0;
+	TA1CCR2 = 0;
+}
+
+void rightMotorForward() {
+	TA1CCR1 = 100;
+	TA1CCR2 = 0;
+}
+
+void MotorsBackward() {
+	rightMotorStop();
+	leftMotorStop();
+	TA1CCR2 = 100;
+}
 
 void moveRobotForward(char dutyCycle) {
-	TA0CCR1 = 0;
-	TA1CCR1 = dutyCycle;
+
 	rightMotorForward();
 	leftMotorForward();
 
 }
 
 void moveRobotBackward(char dutyCycle) {
-	TA0CCR1 = dutyCycle;
-	TA1CCR1 = dutyCycle;
-	rightMotorBackward();
-	leftMotorBackward();
+
+	MotorsBackward();
 
 }
 void turnRobotLeft(char dutyCycle) {
-	TA0CCR1 = dutyCycle;
-	TA1CCR1 = dutyCycle;
+	leftMotorStop();
 	rightMotorForward();
-	leftMotorBackward();
 
 }
 void turnRobotRight(char dutyCycle) {
-	TA0CCR1 = 0;
-	TA1CCR1 = dutyCycle;
-	rightMotorBackward();
+
+	rightMotorStop();
 	leftMotorForward();
 
 }

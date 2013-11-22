@@ -12,8 +12,8 @@ void initRobot();
 
 void leftMotorForward();
 void rightMotorForward();
-void leftMotorBackward();
-void leftMotorBackward();
+void MotorsBackward();
+
 
 void stopRobot();
 void moveRobotForward(char dutyCycle);
